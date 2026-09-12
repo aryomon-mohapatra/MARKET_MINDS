@@ -1,0 +1,78 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0f1117;
+  --bg2:       #1a1d27;
+  --bg3:       #242736;
+  --border:    rgba(255,255,255,0.08);
+  --text:      #e8eaf0;
+  --text2:     #9ca3af;
+  --text3:     #6b7280;
+  --accent:    #6366f1;
+  --accent2:   #818cf8;
+  --green:     #10b981;
+  --red:       #ef4444;
+  --amber:     #f59e0b;
+  --radius:    12px;
+  --radius-sm: 8px;
+}
+
+html { height: 100%; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100%;
+  overflow: hidden;
+}
+
+#root { height: 100%; display: flex; flex-direction: column; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+
+/* Markdown inside messages */
+.prose h2 { font-size: 1rem; font-weight: 600; margin: 1rem 0 0.4rem; color: var(--text); }
+.prose h3 { font-size: 0.9rem; font-weight: 600; margin: 0.75rem 0 0.3rem; color: var(--text2); }
+.prose p  { margin-bottom: 0.6rem; line-height: 1.65; }
+.prose ul, .prose ol { padding-left: 1.4rem; margin-bottom: 0.6rem; }
+.prose li { margin-bottom: 0.25rem; line-height: 1.6; }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose em { color: var(--text2); }
+.prose code {
+  background: var(--bg3);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.82em;
+  font-family: "JetBrains Mono", monospace;
+}
+.prose pre {
+  background: var(--bg3);
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  margin: 0.6rem 0;
+}
+.prose table { width: 100%; border-collapse: collapse; margin: 0.6rem 0; font-size: 0.85rem; }
+.prose th {
+  background: var(--bg3);
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+.prose td { padding: 0.35rem 0.75rem; border-bottom: 1px solid var(--border); }
+.prose a { color: var(--accent2); text-decoration: underline; }
+
+/* Pulse animation for thinking dots */
+@keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+.dot-1 { animation: pulse 1.2s ease-in-out 0s infinite; }
+.dot-2 { animation: pulse 1.2s ease-in-out 0.2s infinite; }
+.dot-3 { animation: pulse 1.2s ease-in-out 0.4s infinite; }
+
+/* Fade-in */
+@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+.fade-in { animation: fadeIn 0.25s ease forwards; }
